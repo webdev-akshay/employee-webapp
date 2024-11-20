@@ -1,0 +1,143 @@
+<div class="container m-5">
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-end">
+    </div>
+    <div class="col-md-8">
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Contact No.</th>
+            <th>Designation</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items">
+            <td>{{ item.empId }}</td>
+            <td>{{ item.empCode }}</td>
+            <!-- <td>{{item.name.length>10 ?item.name.substring(0,10)+'...'}}</td> -->
+            <td>{{item.name.length > 10 ? item.name.substring(0, 10) + '...' : item.name}}</td>
+
+            <td>{{item.empEmailId}}</td>
+            <td>{{item.role}}</td>
+            <td>{{item.mobile}}</td>
+            <td>{{item.designation}}</td>
+            <td>
+              <div class="d-flex align-items-center justify-content-center">
+                <button class="btn btn-warning ms-1 me-1" (click)="editEmployee(item)"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="btn btn-danger ms-1 me-1" (click)="deleteEmployeeRecord(item.empId)"><i class="fa-solid fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <h4 class="p-3"><b>Add Employee</b></h4>
+        <div class="card-body">
+          <form (ngSubmit)="addItem()">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="name">ID:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    [(ngModel)]="item.empId"
+                    [disabled]="isEditMode"
+                    name="name"
+                    required />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="description">Code</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    [(ngModel)]="item.empCode"
+                    name="description"
+                    required />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="description">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    [(ngModel)]="item.name"
+                    name="description"
+                    required />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="description">Email:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    [(ngModel)]="item.empEmailId"
+                    name="description"
+                    required />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="description">Role:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    [(ngModel)]="item.role"
+                    name="description"
+                    required />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="description">Contact No.:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    [(ngModel)]="item.mobile"
+                    name="description"
+                    required />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="description">Designation</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    [(ngModel)]="item.designation"
+                    name="description"
+                    required />
+                </div>
+              </div>
+            </div>
+          </form>
+      <button type="submit" class="btn btn-success mt-3" (click)="handleSubmit()">{{isEditMode ? 'update Employee':'Add Employee'}}</button>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
