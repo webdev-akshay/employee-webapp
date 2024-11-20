@@ -39,7 +39,7 @@
     </div>
     <div class="col-md-4">
       <div class="card">
-        <h4 class="p-3"><b>Add Employee</b></h4>
+        <h4 class="p-3"><b>{{isEditMode ? 'Update Employee':'Add Employee'}}</b></h4>
         <div class="card-body">
           <form (ngSubmit)="addItem()">
             <div class="row">
@@ -52,7 +52,7 @@
                     id="name"
                     [(ngModel)]="item.empId"
                     [disabled]="isEditMode"
-                    name="name"
+                    name="empId"
                     required />
                 </div>
               </div>
@@ -64,7 +64,7 @@
                     class="form-control"
                     id="description"
                     [(ngModel)]="item.empCode"
-                    name="description"
+                    name="empCode"
                     required />
                 </div>
               </div>
@@ -76,7 +76,7 @@
                     class="form-control"
                     id="description"
                     [(ngModel)]="item.name"
-                    name="description"
+                    name="empName"
                     required />
                 </div>
               </div>
@@ -88,7 +88,7 @@
                     class="form-control"
                     id="description"
                     [(ngModel)]="item.empEmailId"
-                    name="description"
+                    name="empEmailId"
                     required />
                 </div>
               </div>
@@ -98,7 +98,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="description"
+                    id="role"
                     [(ngModel)]="item.role"
                     name="description"
                     required />
@@ -112,7 +112,7 @@
                     class="form-control"
                     id="description"
                     [(ngModel)]="item.mobile"
-                    name="description"
+                    name="mobile"
                     required />
                 </div>
               </div>
@@ -124,20 +124,16 @@
                     class="form-control"
                     id="description"
                     [(ngModel)]="item.designation"
-                    name="description"
+                    name="designation"
                     required />
                 </div>
               </div>
             </div>
           </form>
       <button type="submit" class="btn btn-success mt-3" (click)="handleSubmit()">{{isEditMode ? 'update Employee':'Add Employee'}}</button>
-
         </div>
       </div>
-
-
     </div>
   </div>
-
 </div>
 

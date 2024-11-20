@@ -46,25 +46,29 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//  Update API
+// Update API
 router.put('/:empId', async (req, res) => {
-  const { id } = req.params;
-  const { name, designation,empId,empCode,empEmailId,role,mobile } = req.body;
+  const { empId } = req.params; // Correctly destructure empId
+  const { name, designation, empCode, empEmailId, role, mobile } = req.body;
 
   try {
-    const updatedItem = await Item.findByIdAndUpdate(
-      id,
-      { name, designation,empId,empCode,empEmailId,role,mobile },
-      { new: true }  // Return the updated item
+    // Use findOneAndUpdate for custom fields
+    const updatedItem = await Item.findOneAndUpdate(
+      { empId }, // Query by empId
+      { name, designation, empId, empCode, empEmailId, role, mobile },
+      { new: true } // Return the updated item
     );
+
     if (!updatedItem) {
       return res.status(404).json({ message: 'Item not found' });
     }
-    res.status(200).json(updatedItem);  // Send the updated item
+
+    res.status(200).json(updatedItem); // Send the updated item
   } catch (error) {
     res.status(500).json({ message: 'Error updating item', error });
   }
 });
+
 // Delete API
 router.delete('/:empId', async (req, res) => {
   const { empId } = req.params; // Get empId from the request
